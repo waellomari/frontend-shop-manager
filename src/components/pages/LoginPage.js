@@ -2,19 +2,27 @@ import './LoginPage.css'
 import { useState, useContext } from "react";
 import { NavLink } from 'react-router-dom'; 
 import UserContext from "../../context/UsersContext";
+import { useHistory } from 'react-router-dom';
 
-
-function LoginPage () {
+function LoginPage (props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     
-    const {loggedIn, login, logout} = useContext(UserContext);
+    const {loggedIn, logout} = useContext(UserContext);
+    const history = useHistory();
 
+    const handleLogin = (event) => {
+        event.preventDefault();
+        setUsername(username);
+        props.setLoggedIn(true);
+        history.push("/products");
+    };
+/* 
     const handleLogin = (event) => {
         event.preventDefault();
         login(username, password);
     };
-
+ */
     const handleLogout = () => {
         logout();
     };
