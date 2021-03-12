@@ -1,10 +1,13 @@
 import { useParams} from 'react-router-dom';
-import Products from '../Products';
+import { useContext } from "react";
+import ProductsContext from "../../context/ProductsContext";
 
 
-function ProductDetailsPage (product) {
-    const { productId } = useParams();
 
+function ProductDetailsPage () {
+    const { search } = useParams();
+    const { products } = useContext(ProductsContext);
+    const product = products.find(el => el.name === search)
     return (
         <>
         <a href="#!" className="list-group-item list-group-item-action flex-column align-items-start px-5 py-3">

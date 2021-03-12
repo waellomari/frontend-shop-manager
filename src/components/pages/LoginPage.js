@@ -1,14 +1,22 @@
 import './LoginPage.css'
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { NavLink } from 'react-router-dom'; 
+import UserContext from "../../context/UsersContext";
 
-function LoginPage (props) {
+
+function LoginPage () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    
+    const {loggedIn, login, logout} = useContext(UserContext);
 
-    const handleSubmit = (event) => {
-        console.log({ username, password });
-        props.setLoggedIn(!props.loggedIn);
+    const handleLogin = (event) => {
         event.preventDefault();
+        login(username, password);
+    };
+
+    const handleLogout = () => {
+        logout();
     };
 
     const handleUsernameInput = (event) => {
@@ -22,20 +30,21 @@ function LoginPage (props) {
     return (
     <>
         
-        <div class="wrapper fadeInDown mt-5">
+        <div className="wrapper fadeInDown mt-5">
             <div id="formContent">
 
                 <h1 className='mt-4'>Login</h1>
-                {props.loggedIn ? <p>Logged In</p> : <p>Not Logged In</p>}
+                {loggedIn ?   <p onClick={handleLogout}>Log out</p> : <p>you are not logged In</p>}
 
-                <form onSubmit={handleSubmit}>
-                    <input type="text" id="login" class="fadeIn second mt-2" name="login" required value={username} placeholder="login" onChange={handleUsernameInput}></input>
-                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"  required value={password} onChange={handlePasswordInput} ></input>
-                    <input type="submit" class="fadeIn fourth" value="Log In" ></input>
+                <form onSubmit={handleLogin}>
+                    <input type="text" id="login" className="fadeIn first mt-2" name="login" required value={username} placeholder="login" onChange={handleUsernameInput}></input>
+                    <input type="text" id="password" className="fadeIn second" name="login" placeholder="password"  required value={password} onChange={handlePasswordInput} ></input>
+                    <input type="submit" className="fadeIn fourth" value="Log In" ></input>
                 </form>
 
                 <div id="formFooter">
-                <a class="underlineHover" href="#!">Forgot Password?</a>
+                    <NavLink className="underlineHover" to='./register'> not registered ?</NavLink>
+                    
                 </div>
 
             </div>
