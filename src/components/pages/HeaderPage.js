@@ -3,14 +3,16 @@ import { useHistory } from 'react-router-dom';
 import { useState, useContext } from 'react';
 
 import ProductsContext from "../../context/ProductsContext";
+import UsersContext from "../../context/UsersContext";
 
 
   
 
-function HeaderPage ({loggedIn, logout}) {
+function HeaderPage ({loggedIn}) {
     let history = useHistory();
     const  products  = useContext(ProductsContext);
     const [search, setSearch] = useState("");
+    const { logout } = useContext(UsersContext);
     function Search (event) {
         event.preventDefault();
         let laptop = products.find(el => el.name === search)

@@ -27,10 +27,9 @@ function App() {
       <Switch>
 
         <Route path='/login'>
-          <LoginPage/>
+          <LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         </Route>
         <Route path='/register' component={RegistrationForm}>
-          
         </Route>
         <ProtectedRoute path='/products' component={ProductsPage} exact />
         <ProtectedRoute path='/products/:search' component={ProductDetailsPage} exact />
