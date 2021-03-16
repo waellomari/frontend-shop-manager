@@ -1,6 +1,8 @@
 import './LoginPage.css'
 import { useState } from "react";
 import { NavLink } from 'react-router-dom'; 
+import { uuid } from 'uuidv4';
+import axios from 'axios';
 
 function RegistrationForm (props) {
     const [ state, setState ] = useState({
@@ -8,7 +10,7 @@ function RegistrationForm (props) {
         password : '',
         confirmPassword : ''
     })
-
+    
     const handleChange = (event) => {
         const { id, value } = event.target
         setState( prevState => ({
@@ -20,9 +22,18 @@ function RegistrationForm (props) {
     const handleSubmitClick = (e) => {
         e.preventDefault();
         if(state.password === state.confirmPassword) {
-            alert('Done')    
+            const newUser ={
+                id: uuid(),
+                email: state.email,
+                password: state.password
+            }
+            axios.post('http://localhost:4444/users', newUser)
+            .then(alert('you have succeeded registered'))
+            .catch( err => {
+                err = new Error()
+            })    
         } else {
-            alert('Passwords do not match');
+            alert("Passwords don't match");
         }
     }
 

@@ -10,7 +10,7 @@ import UsersContext from "../../context/UsersContext";
 
 function HeaderPage ({loggedIn}) {
     let history = useHistory();
-    const  products  = useContext(ProductsContext);
+    const { products } = useContext(ProductsContext);
     const [search, setSearch] = useState("");
     const { logout } = useContext(UsersContext);
     function Search (event) {

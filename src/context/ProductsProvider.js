@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductsContext from './ProductsContext';
 
+
 function ProductsProvider ({children}) {
     const [products, setProducts] = useState([]);
     useEffect(() => {

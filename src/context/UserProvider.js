@@ -9,8 +9,8 @@ function UsersProvider ({children}) {
     const [username, setUsername] = useState("");
 
     // we can define functions in here to make them reusable across our components
-    const login = (user, pass) => {
-        setUsername(user);
+    const login = (username) => {
+        setUsername(username);
         setLoggedIn(true);
         history.push("/products");
     };
