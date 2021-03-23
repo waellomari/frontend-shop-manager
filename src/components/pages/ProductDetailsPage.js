@@ -10,7 +10,7 @@ function ProductDetailsPage () {
     const product = products.find(el => el.name === search)
     return (
         <>
-        <a href="#!" className="list-group-item list-group-item-action flex-column align-items-start px-5 py-3">
+        <a to="#!" className="list-group-item list-group-item-action flex-column align-items-start px-5 py-3">
           <div className="d-flex w-100 justify-content-between">
             <h5 className="mb-1">{product.name}</h5>
             <small>{product.articleNo}</small>
