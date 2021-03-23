@@ -6,7 +6,7 @@ import ProductsContext from './ProductsContext';
 function ProductsProvider ({children}) {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8080/products')
+        axios.get('https://computergroup.herokuapp.com/products')
             .then(res => setProducts(res.data))
             .catch(err => console.log(err))
     }, []);

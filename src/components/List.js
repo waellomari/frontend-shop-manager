@@ -1,4 +1,6 @@
 import './List.css';
+import { Link } from 'react-router-dom'; 
+
 
 export default function List({product}){
     return (
@@ -10,7 +12,7 @@ export default function List({product}){
                     {product.articleNo}</h1>
                   <p>{product.description}</p>
                 </div>
-                <a href="#!">more</a>
+                <Link to={`/products/${product.name}`}>more</Link>
                 <div className="ico-card">
                 <i className="fa fa-rebel"></i>
               </div>

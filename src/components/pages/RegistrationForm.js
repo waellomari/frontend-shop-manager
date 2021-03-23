@@ -29,7 +29,7 @@ function RegistrationForm (props) {
                 email: state.email,
                 password: state.password
             }
-            axios.post('http://localhost:8080/user/register', newUser)
+            axios.post('https://computergroup.herokuapp.com/user/register', newUser)
             .then(alert('you have succeeded registered'))
             .catch( err => {
                 err = new Error()

@@ -17,7 +17,7 @@ function LoginPage (props) {
     const handleLogin = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:8080/user/login', {username, password})
+        axios.post('https://computergroup.herokuapp.com/user/login', {username, password})
             .then((result) => {
             setUsername(username);
             cookies.set("TOKEN", result.data.token,{
