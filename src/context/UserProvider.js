@@ -26,7 +26,9 @@ function UsersProvider ({children}) {
     return (
         <UsersContext.Provider value={{
             loggedIn,
+            setLoggedIn,
             username,
+            setUsername,
             login,
             logout,
         }}>
